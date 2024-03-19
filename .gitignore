@@ -1,0 +1,5 @@
+bazel-bin
+bazel-pkg_thing
+bazel-out
+bazel-testlogs
+node_modules/

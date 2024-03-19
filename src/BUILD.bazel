@@ -1,0 +1,23 @@
+load("@aspect_bazel_lib//lib:output_files.bzl", "output_files")
+load("@aspect_rules_esbuild//esbuild:defs.bzl", "esbuild")
+load("@rules_pkg//pkg:tar.bzl", "pkg_tar")
+
+esbuild(
+    name = "bundle",
+    entry_point = "index.js",
+    splitting = True,
+)
+
+output_files(
+    name = "bundle_directory",
+    paths = ["src/bundle"],
+    target = ":bundle",
+)
+
+pkg_tar(
+    name = "tar",
+    srcs = [
+        ":bundle_directory",
+    ],
+    include_runfiles = True,
+)
