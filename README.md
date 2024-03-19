@@ -1,4 +1,19 @@
 ```bash
+❯ bazel build //src:tar_nofiles
+INFO: Analyzed target //src:tar_nofiles (1 packages loaded, 4 targets configured).
+INFO: Found 1 target...
+Target //src:tar_nofiles up-to-date:
+  bazel-bin/src/tar_nofiles.tar
+INFO: Elapsed time: 0.120s, Critical Path: 0.06s
+INFO: 3 processes: 2 internal, 1 linux-sandbox.
+INFO: Build completed successfully, 3 total actions
+
+❯ tar -tf bazel-bin/src/tar_nofiles.tar 
+bundle/
+bundle/index.js
+```
+
+```bash
 ❯ bazel build //src:tar    
 INFO: Analyzed target //src:tar (0 packages loaded, 4 targets configured).
 ERROR: /home/scott/dev/ncr/pkg_thing/src/BUILD.bazel:26:8: Writing: bazel-out/k8-fastbuild/bin/src/tar.tar failed: (Exit 1): build_tar failed: error executing PackageTar command (from target //src:tar) bazel-out/k8-opt-exec-ST-13d3ddad9198/bin/external/rules_pkg/pkg/private/tar/build_tar '--output=bazel-out/k8-fastbuild/bin/src/tar.tar' '--mode=0555' '--owner=0.0' '--owner_name=.' '--directory=/' ... (remaining 2 arguments skipped)
@@ -23,3 +38,4 @@ INFO: Elapsed time: 0.123s, Critical Path: 0.07s
 INFO: 3 processes: 3 internal.
 ERROR: Build did NOT complete successfully
 ```
+
